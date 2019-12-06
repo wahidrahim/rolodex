@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+
+import { CardList } from './components/card-list/card-list.component'
+
 import './App.css'
 
 class App extends Component {
@@ -22,9 +25,11 @@ class App extends Component {
   render() {
     return (
       <div className="monsters">
-        {this.state.monsters.map(monster => (
-          <h1 key={monster.id}>{monster.name}</h1>
-        ))}
+        <CardList monsters={this.state.monsters}>
+          {this.state.monsters.map(monster => {
+            return <h1 key={monster.id}>{monster.name}</h1>
+          })}
+        </CardList>
       </div>
     )
   }
