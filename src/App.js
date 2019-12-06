@@ -1,37 +1,33 @@
-import React, { Component } from "react";
-import logo from "./logo.svg";
-import "./App.css";
+import React, { Component } from 'react'
+import axios from 'axios'
+import './App.css'
 
 class App extends Component {
   newString = 'testing'
 
   constructor() {
-    super();
+    super()
 
     this.state = {
-      greeting: "Hello World"
-    };
+      monsters: []
+    }
+  }
+
+  async componentDidMount() {
+    const res = await axios.get('https://jsonplaceholder.typicode.com/users')
+
+    this.setState({ monsters: res.data })
   }
 
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>{this.state.greeting}</p>
-          <button
-            onClick={() => {
-              this.setState({ greeting: this.newString }, () => {
-                console.log("test");
-              });
-            }}
-          >
-            change string
-          </button>
-        </header>
+      <div className="monsters">
+        {this.state.monsters.map(monster => (
+          <h1 key={monster.id}>{monster.name}</h1>
+        ))}
       </div>
-    );
+    )
   }
 }
 
-export default App;
+export default App
