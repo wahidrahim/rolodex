@@ -1,9 +1,14 @@
 .search {
   -webkit-appearance: none;
-  border: none;
   outline: none;
+  border: none;
+  border-bottom: 1px solid #aaa;
   padding: 10px;
-  width: 150px;
-  line-height: 30px;
-  margin-bottom: 30px;
+  width: 100%;
+  line-height: 2rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  font-size: 2rem;
+  background: none;
+  color: white;
 }
